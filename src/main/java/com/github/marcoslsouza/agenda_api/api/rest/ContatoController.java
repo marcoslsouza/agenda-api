@@ -1,11 +1,9 @@
 package com.github.marcoslsouza.agenda_api.api.rest;
 
-import com.github.marcoslsouza.agenda_api.model.entity.Contato;
-import com.github.marcoslsouza.agenda_api.model.repository.ContatoRepository;
-import lombok.RequiredArgsConstructor;
-
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.marcoslsouza.agenda_api.model.entity.Contato;
+import com.github.marcoslsouza.agenda_api.model.repository.ContatoRepository;
+
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/contatos")
 @RequiredArgsConstructor
@@ -29,7 +32,7 @@ public class ContatoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Contato save(@RequestBody Contato contato) {
+    public Contato save(@RequestBody @Valid Contato contato) {
     	return repository.save(contato);
     }
     

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,11 @@ public class Contato {
 	private Long id;
 	
 	@Column(length = 150, nullable = false)
+	@NotEmpty(message = "Campo nome é obrigatório.")
 	private String nome;
 	
 	@Column(length = 150, nullable = false)
+	@NotEmpty(message = "Campo e-mail é obrigatório.")
 	private String email;
 	
 	@Column
