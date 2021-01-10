@@ -49,10 +49,10 @@ public class ContatoController {
     
     // Em uma atualizacao total da entidade usamos @PutMapping, mas em uma atualizacao parcial usamos @PatchMapping
     @PatchMapping("{id}/favorito") // {id}/favorito para indicar que esta alterando o favorito
-    public void favorite(@PathVariable Long id, @RequestBody Boolean favorito) {
+    public void favorite(@PathVariable Long id) {
     	Optional<Contato> contato = repository.findById(id);
     	contato.ifPresent(c -> {
-    		c.setFavorito(favorito);
+    		c.setFavorito(c.getFavorito() == Boolean.TRUE ? false : true);
     		repository.save(c);
     	});
     }
